@@ -1,0 +1,31 @@
+.ecommerce{
+    text-align: left;
+    color: black;
+    margin-left: 50px; 
+}
+.Home{
+    margin-left: 200px;
+}
+.image{
+    height: 600px;
+    width: 1500px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px 10px 10px 10px;  
+}
+.imageheading{
+    margin-left: 50px;
+    margin-top: -350px;
+    color: white;
+    font-size: 60px;
+}
+.imagepara{
+    margin-left: 50px;
+    margin-top: -270px;
+    color: white;
+    font-size: 30px;
+}
+.cardimg{
+    height: 200px;
+    width: 100px;
+}
