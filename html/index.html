@@ -18,13 +18,13 @@
               <a class="nav-link active Home fs-4 link-body-emphasis" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fs-4 link-body-emphasis" href="#">Products</a>
+              <a class="nav-link fs-4 link-body-emphasis" href="../html/products.html">Products</a>
             </li>
             <li class="nav-item">
               <a class="nav-link fs-4 link-body-emphasis" href="../html/about.html">about</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fs-4 link-body-emphasis" href="#">contact</a>
+              <a class="nav-link fs-4 link-body-emphasis" href="../html/contact.html">contact</a>
             </li>
           </ul>
           <button type="button" class="btn btn-outline-dark me-3" style="margin-left: 150px;">
@@ -42,9 +42,8 @@
           <button type="button" class="btn btn-outline-dark ms-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-            </svg><a>   Cart(0)</a>
-          </button>
-        
+            </svg><a onclick="window.location.href='../html/cart.html';">   Cart <span id="cart-item-count" class="badge">0</span></a>
+          </button> 
       </nav>
       <img src="../main.png.jpg" alt="home-img" class="image">
       <h1 class="position-absolute imageheading">New Season Arrivals</h1>
@@ -52,8 +51,27 @@
       <h2 class="text-center mt-3 fs-1 mb-4">Latest Products</h2>
       <hr class="ms-5 me-5">
     
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <div class="ms-5 me-5">
+        <div class="text-center" style="margin-top: 50px;margin-bottom: 50px;">
+          <button class="btn btn-outline-dark" onclick="filterProducts('all')">All</button>
+          <button class="btn btn-outline-dark" onclick="filterProducts('men\'s clothing')">Men's clothing</button>
+          <button class="btn btn-outline-dark" onclick="filterProducts('women\'s clothing')">Women's clothing</button>
+          <button class="btn btn-outline-dark" onclick="filterProducts('jewelery')">Jewelery</button>
+          <button class="btn btn-outline-dark" onclick="filterProducts('electronics')">Electronics</button>
+        </div>
+        
+        <div class="container column-gap-5">
+          <div class="row row-cols-auto row-gap-3 column-gap-3" id="home-product-list">
+            
 
+          </div>
+
+        </div>
+      </div>
+      
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../js/products.js"></script>
+    <script src="../js/cart.js"></script>
 </body>
 </html>
