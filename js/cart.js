@@ -1,12 +1,9 @@
-// Function to update the cart item count in the navigation menu
 function updateCartNavCount() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartItemCount = document.getElementById('cart-item-count');
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-    cartItemCount.textContent = totalItems; // Update the item count inside the nav link
+    cartItemCount.textContent = totalItems;
 }
-
-// Function to load and display cart items and update the order summary
 function loadCart() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartItemsContainer = document.getElementById('cart-items');
@@ -16,9 +13,7 @@ function loadCart() {
     const orderTotalPrice = document.getElementById('order-total-price');
     const orderFinalTotal = document.getElementById('order-final-total');
 
-    cartItemsContainer.innerHTML = ''; // Clear existing cart items
-
-    // Show or hide elements based on cart status
+    cartItemsContainer.innerHTML = '';
     if (cart.length === 0) {
         emptyCartMessage.style.display = 'block';
         cartContent.style.display = 'none';
@@ -70,21 +65,18 @@ function loadCart() {
 `;
 
 
-            cartItemsContainer.appendChild(cartRow); // Add row to the cart table
+            cartItemsContainer.appendChild(cartRow);
             total += parseFloat(item.price) * item.quantity;
             totalQuantity += item.quantity;
         });
 
         orderProductCount.textContent = totalQuantity;
         orderTotalPrice.textContent = `$${total.toFixed(2)}`;
-        orderFinalTotal.textContent = `$${(total + 30).toFixed(2)}`; // Adding $30 shipping fee
+        orderFinalTotal.textContent = `$${(total + 30).toFixed(2)}`;
     }
 
-    // After updating the cart, update the cart count in the navigation
     updateCartNavCount();
 }
-
-// Function to update product quantity in the cart
 function updateQuantity(id, action) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const product = cart.find(item => item.id === id);
@@ -93,29 +85,24 @@ function updateQuantity(id, action) {
         if (action === 'increase') {
             product.quantity += 1;
         } else if (action === 'decrease') {
-            // Decrease quantity, but if it's 1, remove the item from the cart
             if (product.quantity > 1) {
                 product.quantity -= 1;
             } else {
-                cart = cart.filter(item => item.id !== id); // Remove the item from the cart if quantity reaches 0
+                cart = cart.filter(item => item.id !== id);
             }
         }
     }
 
-    localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart
-    loadCart(); // Re-render cart with updated quantity or removed item
+    localStorage.setItem('cart', JSON.stringify(cart));
+    loadCart();
 }
-
-
-// Function to remove an item from the cart
 function removeFromCart(id) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart = cart.filter(item => item.id !== id); // Remove the item by id
+    cart = cart.filter(item => item.id !== id);
     localStorage.setItem('cart', JSON.stringify(cart));
-    loadCart(); // Re-render cart after removal
+    loadCart();
 }
 
-// Function to add products to the cart (stored in localStorage)
 function addToCart(id, title, image, price) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -127,11 +114,9 @@ function addToCart(id, title, image, price) {
         cart.push({ id, title, image, price, quantity: 1, category: 'bag' });
     }
 
-    localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart
-    loadCart(); // Re-render cart and update item count in nav
+    localStorage.setItem('cart', JSON.stringify(cart));
+    loadCart();
 }
-
-// Load cart and update the nav cart count on page load
 document.addEventListener('DOMContentLoaded', function() {
-    loadCart();  // Load the cart and update the navigation count
+    loadCart();
 });

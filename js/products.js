@@ -13,8 +13,8 @@ async function fetchProducts(category='all',target='home-product-list') {
     }
 }
 function shortenTitle(title) {
-    const words = title.split(" "); // Split title into words
-    return words.slice(0, 4).join(" ") + (words.length > 4 ? "..." : ""); // Return the first 5 words and append "..."
+    const words = title.split(" ");
+    return words.slice(0, 4).join(" ") + (words.length > 4 ? "..." : "");
 }
 function generateDescription(product) {
     let description = "";
@@ -29,24 +29,17 @@ function generateDescription(product) {
     } else {
         description = "This is a must-have product designed for everyday needs, combining utility with style.";
     }
-
-    // Limit the description to the first 10 words
     const descWords = description.split(" ");
     return descWords.slice(0, 6).join(" ") + (descWords.length > 6 ? "..." : "");
 }
-
-// Function to display products dynamically in the specified section
 function displayProducts(products, target) {
-    const productList = document.getElementById(target); // Identify the target container
-    productList.innerHTML = ''; // Clear previous products
+    const productList = document.getElementById(target);
+    productList.innerHTML = '';
 
     products.forEach(product => {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
-
-        // Shorten the product name to 4-5 words
         const shortenedTitle = shortenTitle(product.title);
-        // Create a description for the product
         const description = generateDescription(product);
         productElement.innerHTML = `
         <div class="card  col col-4 rounded-4" style="width: 25rem;">
@@ -69,31 +62,9 @@ function displayProducts(products, target) {
         productList.appendChild(productElement);
     });
 }
-
-// Function to filter products based on category
 function filterProducts(category, target) {
-    fetchProducts(category, target); // Fetch products for the specified section
+    fetchProducts(category, target); 
 }
-
-// Ensure navigation works between sections
-function showSection(sectionId) {
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        if (section.id === sectionId) {
-            section.style.display = 'block'; // Show the selected section
-            if (sectionId === 'products') {
-                fetchProducts('all', 'products-list'); // Fetch all products for Products section
-            } else if (sectionId === 'home') {
-                fetchProducts('all', 'home-product-list'); // Fetch all products for Home section
-            } else if (sectionId === 'cart') {
-                loadCart(); // Load the cart when navigating to the cart section
-            }
-        } else {
-            section.style.display = 'none'; // Hide other sections
-        }
-    });
-}
-// Load Home section products on page load
 window.onload = function () {
-    fetchProducts('all', 'home-product-list'); // Load Home section products by default
-};
+    fetchProducts('all', 'home-product-list');
+}
